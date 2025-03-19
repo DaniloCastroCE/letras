@@ -9,6 +9,7 @@ const painel = document.querySelector("#painel")
 const init = () => {
     aminacao()
     bandeiras[0].classList.add('selectIdioma')
+    inp_texto.focus()
 }
 
 const clickEnter = () => {
