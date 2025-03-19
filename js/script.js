@@ -36,7 +36,6 @@ inp_texto.addEventListener('input', () => {
     }
     else if (string_width >= width.min && string_width <= width.max) {
         inp_texto.style.width = `${inp_texto.value.length * 20}px`
-
     }
     else if (string_width > width.max) {
         inp_texto.style.width = `${width.max}px`
@@ -139,6 +138,7 @@ const pararFala = () => {
     inp_texto.focus();
     falando = false;
     document.querySelector("#box-fone").style = "visibility: hidden;";
+    pare.style = "visibility: hidden;"
 };
 
 const idiomaSimples = (opcao) => {
