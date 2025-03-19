@@ -31,7 +31,7 @@ inp_texto.addEventListener('input', () => {
 
     const string_width = inp_texto.value.length * 20
 
-    if (window.innerWidth <= width.min) {
+    if (window.innerWidth <= width.min + 50) {
         inp_texto.style.width = `${window.innerWidth - 20}px`
     }
     else if (string_width >= width.min && string_width <= width.max) {
