@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Danilo Castro CE">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" id="favicon" type="image/png" href="./img/favicon.png">
+    <title>Aprendendo as letrinhas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barriecito&family=Lilita+One&family=Rock+Salt&family=Tektur:wght@400..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="centralizar">
+    <div class="icons" id="box-fone">
+        <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            height="24px" 
+            viewBox="0 -960 960 960" 
+            width="24px" 
+            fill="#1f1f1f">
+            <path 
+                d="M640-440v-80h160v80H640Zm48 280-128-96 48-64 128 96-48 64Zm-80-480-48-64 128-96 48 64-128 96ZM120-360v-240h160l200-200v640L280-360H120Zm280-246-86 86H200v80h114l86 86v-252ZM300-480Z"/>
+        </svg>
+    </div>
+
+    <div class="icons" id="box-pare" onclick="pararFala()">
+        <img src="./img/pare.png" alt="pare">
+    </div>
+    
+    <div class="bloco centralizar">
+        <div id="box-input">
+            <div id="idiomaSimples" class="centralizar">
+                <img id="br" class="bandeiras" src="https://flagcdn.com/br.svg" alt="basil" onclick="idiomaSimples('pt-BR')">
+                <img id="us" class="bandeiras" src="https://flagcdn.com/us.svg" alt="Estados Unidos" onclick="idiomaSimples('en-US')">
+            </div>
+            <input class="input tektur-letras" id="inp-texto" type="text">
+            <div class="box-btns centralizar">
+                <button id="btn-falar" class="lilita-one-regular centralizar btns" onclick="clickEnter()">
+                    FALAR 
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        height="24px" 
+                        viewBox="0 -960 960 960" 
+                        width="24px" 
+                        fill="#1f1f1f">
+                        <path 
+                            d="M720-440v-80h160v80H720Zm48 280-128-96 48-64 128 96-48 64Zm-80-480-48-64 128-96 48 64-128 96ZM200-200v-160h-40q-33 0-56.5-23.5T80-440v-80q0-33 23.5-56.5T160-600h160l200-120v480L320-360h-40v160h-80Zm240-182v-196l-98 58H160v80h182l98 58Zm120 36v-268q27 24 43.5 58.5T620-480q0 41-16.5 75.5T560-346ZM300-480Z"/>
+                    </svg>
+                </button>
+                <button id="btn-limpar" class="lilita-one-regular centralizar btns" onclick="limpar()"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        height="24px" 
+                        viewBox="0 -960 960 960" 
+                        width="24px" 
+                        fill="#1f1f1f">
+                        <path 
+                            d="M440-520h80v-280q0-17-11.5-28.5T480-840q-17 0-28.5 11.5T440-800v280ZM200-360h560v-80H200v80Zm-58 240h98v-80q0-17 11.5-28.5T280-240q17 0 28.5 11.5T320-200v80h120v-80q0-17 11.5-28.5T480-240q17 0 28.5 11.5T520-200v80h120v-80q0-17 11.5-28.5T680-240q17 0 28.5 11.5T720-200v80h98l-40-160H182l-40 160Zm676 80H142q-39 0-63-31t-14-69l55-220v-80q0-33 23.5-56.5T200-520h160v-280q0-50 35-85t85-35q50 0 85 35t35 85v280h160q33 0 56.5 23.5T840-440v80l55 220q13 38-11.5 69T818-40Zm-58-400H200h560Zm-240-80h-80 80Z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="box-painel" class="centralizar">
+            <p id="painel" class="barriecito-regular centralizar"></p>
+            <img src="./img/gif.gif" alt="gif animado" id="img-gif">
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>
