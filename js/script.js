@@ -18,6 +18,7 @@ const clickEnter = () => {
         const texto = inp_texto.value.trim()
         painel.textContent = texto.toUpperCase()
         inp_texto.value = ''
+        inp_texto.style.width = `${width.min}px`
         inp_texto.focus()
         falar(texto)
     }
