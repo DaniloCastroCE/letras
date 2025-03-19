@@ -198,7 +198,6 @@ body,html {
     font-size: 100px;
     text-align: center;
     overflow-y: auto;
-    overflow-x: hidden;
     padding-top: 10px;
     word-wrap: break-word; 
     overflow-wrap: break-word;
