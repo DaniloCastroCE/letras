@@ -197,7 +197,8 @@ body,html {
     color: #2E3B4E;
     font-size: 100px;
     text-align: center;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     padding-top: 10px;
     word-wrap: break-word; 
     overflow-wrap: break-word;
