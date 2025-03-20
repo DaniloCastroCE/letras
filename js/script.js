@@ -10,6 +10,7 @@ const init = () => {
     aminacao()
     bandeiras[0].classList.add('selectIdioma')
     inp_texto.focus()
+    checkWidth()
 }
 
 const clickEnter = () => {
@@ -18,33 +19,40 @@ const clickEnter = () => {
         const texto = inp_texto.value.trim()
         painel.textContent = texto.toUpperCase()
         inp_texto.value = ''
-        inp_texto.style.width = `${width.min}px`
         inp_texto.focus()
         falar(texto)
     }
     aminacao()
+    checkWidth()
 }
 
 
 
-inp_texto.addEventListener('input', () => {
+inp_texto.addEventListener('input', () => checkWidth() )
 
+window.addEventListener('resize', () => checkWidth() )
+
+const checkWidth = () => {
     const string_width = inp_texto.value.length * 20
+    const box_painel = document.querySelector("#box-painel")
 
     if (window.innerWidth <= width.min + 50) {
         inp_texto.style.width = `${window.innerWidth - 20}px`
+        box_painel.style = "justify-content: flex-start;"
     }
     else if (string_width >= width.min && string_width <= width.max) {
         inp_texto.style.width = `${inp_texto.value.length * 20}px`
+        box_painel.style = "justify-content: center;"
     }
     else if (string_width > width.max) {
         inp_texto.style.width = `${width.max}px`
+        box_painel.style = "justify-content: center;"
     }
     else if (string_width < parseInt(width.min)) {
         inp_texto.style.width = `${width.min}px`
+        box_painel.style = "justify-content: center;"
     }
-
-})
+}
 
 const aminacao = () => {
     const img_gif = document.querySelector('#img-gif')
