@@ -1,35 +1,15 @@
-# Projeto: Aprendendo os sons das letras e números.
-
-## Índice
-
-• Sobre
-
-• Tecnologias
-
-• Funcionalidades
-
-• Estrutura do Código
-
-• Como Usar
-
-• Requisitos
-
-• Possíveis Melhorias
-
-• Autor
-
-## Sobre
+# Projeto: Aprendendo os sons das letras e números
 
 Este projeto é uma aplicação interativa que permite a digitação de um texto, que é então exibido em um painel e lido em voz alta usando a API de síntese de fala do navegador.
 
-## Tecnologias
+## Índice
 
-• HTML
-
-• CSS
-
-• JAVASCRIPT
-
+- [Funcionalidades](#funcionalidades)
+- [Estrutura do Código](#estrutura-do-código)
+- [Como Usar](#como-usar)
+- [Requisitos](#requisitos)
+- [Possíveis Melhorias](#possíveis-melhorias)
+- [Autor](#autor)
 
 ## Funcionalidades
 
@@ -45,49 +25,39 @@ Este projeto é uma aplicação interativa que permite a digitação de um texto
 ### JavaScript
 
 1. **Configurações Iniciais**
-
    - Define os tamanhos mínimos e máximos do campo de entrada (`width`).
    - Inicializa o idioma padrão (`pt-BR`).
    - Seleciona elementos do DOM para interação.
 
-2. **Função ****`init()`**
-
+2. **Função `init()`**
    - Aplica animação inicial.
    - Define o idioma padrão visualmente.
    - Ajusta o tamanho da caixa de entrada e coloca o cursor automaticamente.
 
-3. **Função ****`clickEnter()`**
-
+3. **Função `clickEnter()`**
    - Verifica se o texto foi digitado.
    - Exibe o texto no painel.
    - Limpa a entrada e inicia a síntese de fala.
 
-4. **Função ****`onPainel()`**
-
+4. **Função `onPainel()`**
    - Reproduz o texto do painel caso não esteja sendo lido no momento.
 
 5. **Eventos de Entrada e Redimensionamento**
-
    - Ajusta a largura do campo de texto dinamicamente (`checkWidth()`).
 
-6. **Função ****`falar(texto)`**
-
+6. **Função `falar(texto)`**
    - Utiliza a API `SpeechSynthesisUtterance` para converter texto em fala.
 
-7. **Função ****`pararFala()`**
-
+7. **Função `pararFala()`**
    - Cancela a síntese de fala caso esteja ativa.
 
-8. **Controle de Interface (****`statusFalando()`****)**
-
+8. **Controle de Interface (`statusFalando()`)**
    - Ativa ou desativa botões enquanto o texto está sendo lido.
 
-9. **Função ****`idiomaSimples(opcao)`**
-
+9. **Função `idiomaSimples(opcao)`**
    - Permite a mudança de idioma entre português e inglês.
 
-10. **Eventos Globais (****`keydown`**** e ****`click`****)**
-
+10. **Eventos Globais (`keydown` e `click`)**
     - `Enter`: Inicia a leitura do texto.
     - `Delete`: Limpa o painel.
     - `Click`: Mantém o foco na entrada de texto.
@@ -96,7 +66,7 @@ Este projeto é uma aplicação interativa que permite a digitação de um texto
 
 - Define estilos de fontes e responsividade.
 - Configura a aparência dos botões e do painel.
-- Inclui animação para icones de feedback.
+- Inclui animação para ícones de feedback.
 
 ## Como Usar
 
@@ -117,12 +87,11 @@ Este projeto é uma aplicação interativa que permite a digitação de um texto
 - Permitir ajuste na velocidade da fala.
 - Melhorar a acessibilidade com suporte a leitores de tela.
 
----
-
 ## Autor
 
-### DANILO CASTRO CE
+### Danilo Castro CE
 
-- [GitHub]\(https\://github.com/DaniloCastroCE)
+- [GitHub](https://github.com/DaniloCastroCE)
 
-Este projeto foi desenvolvido por [Danilo Castro CE]. Sinta-se à vontade para entrar em contato ou contribuir!
+Este projeto foi desenvolvido por **Danilo Castro CE**. Sinta-se à vontade para entrar em contato ou contribuir!
+
