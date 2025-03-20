@@ -79,6 +79,7 @@ const limpar = () => {
     inp_texto.value = '' // Limpa o input
     painel.textContent = '' // Limpa o painel
     inp_texto.focus() // Foca no input
+    checkWidth() // Ajusta a largura do input
     aminacao() // Aplica animações
 }
 
