@@ -90,6 +90,7 @@ body,html {
 #idiomaSimples {
     flex-direction: row;
     gap: 20px;
+    cursor: pointer;
 }
 
 #idiomaSimples img {
@@ -205,7 +206,8 @@ body,html {
     white-space: normal;
     max-height: 100%;
     max-width: 100%;
-    display: block;    
+    display: block;
+    cursor: pointer;  
 }
 
 
