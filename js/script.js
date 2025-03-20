@@ -14,8 +14,8 @@ const init = () => {
 }
 
 const clickEnter = () => {
-
     if (inp_texto.value.trim()) {
+        statusFalando(true)
         const texto = inp_texto.value.trim()
         painel.textContent = texto.toUpperCase()
         inp_texto.value = ''
@@ -94,10 +94,6 @@ document.querySelector('body').addEventListener('click', (e) => {
 })
 
 const falar = (texto) => {
-    const btn_falar = document.querySelector("#btn-falar")
-    const btn_limpar = document.querySelector("#btn-limpar")
-    const box_fone = document.querySelector("#box-fone")
-    const pare = document.querySelector("#box-pare")
 
     const utterance = new SpeechSynthesisUtterance(texto)
     utterance.lang = idioma
@@ -105,7 +101,30 @@ const falar = (texto) => {
     utterance.pitch = 1
     utterance.volume = 1
 
+    /*
     utterance.onstart = () => {
+        statusFalando(true)
+    }
+    */
+
+    utterance.onend = () => {
+        statusFalando(false)
+    }
+
+    window.speechSynthesis.speak(utterance)
+}
+
+const pararFala = () => {
+    window.speechSynthesis.cancel();
+    statusFalando(false)
+};
+
+const statusFalando = (status) => {
+    const btn_falar = document.querySelector("#btn-falar")
+    const btn_limpar = document.querySelector("#btn-limpar")
+    const box_fone = document.querySelector("#box-fone")
+    const pare = document.querySelector("#box-pare")
+    if(status){
         box_fone.style = "visibility: visible;"
         pare.style = "visibility: visible;"
         falando = true
@@ -114,9 +133,7 @@ const falar = (texto) => {
         btn_falar.style.opacity = '0.5'
         btn_limpar.style.pointerEvents = 'none'
         btn_limpar.style.opacity = '0.5'
-    }
-
-    utterance.onend = () => {
+    }else if (!status){
         inp_texto.disabled = false
         btn_falar.style.pointerEvents = 'auto'
         btn_falar.style.opacity = '1'
@@ -127,27 +144,7 @@ const falar = (texto) => {
         box_fone.style = "visibility: hidden;"
         pare.style = "visibility: hidden;"
     }
-
-    window.speechSynthesis.speak(utterance)
 }
-
-const pararFala = () => {
-    window.speechSynthesis.cancel();
-    const btn_falar = document.querySelector("#btn-falar");
-    const btn_limpar = document.querySelector("#btn-limpar");
-    const pare = document.querySelector("#box-pare");
-    const inp_texto = document.querySelector("#inp-texto");
-
-    inp_texto.disabled = false;
-    btn_falar.style.pointerEvents = 'auto';
-    btn_falar.style.opacity = '1';
-    btn_limpar.style.pointerEvents = 'auto';
-    btn_limpar.style.opacity = '1';
-    inp_texto.focus();
-    falando = false;
-    document.querySelector("#box-fone").style = "visibility: hidden;";
-    pare.style = "visibility: hidden;"
-};
 
 const idiomaSimples = (opcao) => {
     bandeiras.forEach(el => {
