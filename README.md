@@ -1,4 +1,4 @@
-# Projeto: Texto para Fala Interativo
+# Projeto: Aprendendo os sons das letras e números.
 
 ## Índice
 
