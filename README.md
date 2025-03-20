@@ -94,4 +94,3 @@ Este projeto é uma aplicação interativa que permite a digitação de um texto
 - [GitHub](https://github.com/DaniloCastroCE)
 
 Este projeto foi desenvolvido por **Danilo Castro CE**. Sinta-se à vontade para entrar em contato ou contribuir!
-

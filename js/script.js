@@ -28,18 +28,18 @@ const clickEnter = () => {
 
 const onPainel = () => {
     const texto = painel.textContent
-    
-    if(!falando){
+
+    if (!falando) {
         statusFalando(true) // Atualiza o status para "falando"
         falar(texto) // Fala o texto do painel
     }
 }
 
 // Ajusta a largura do input ao digitar
-inp_texto.addEventListener('input', () => checkWidth() )
+inp_texto.addEventListener('input', () => checkWidth())
 
 // Ajusta a largura do input ao redimensionar a janela
-window.addEventListener('resize', () => checkWidth() )
+window.addEventListener('resize', () => checkWidth())
 
 const checkWidth = () => {
     const string_width = inp_texto.value.length * 20 // Calcula a largura do texto digitado
@@ -122,7 +122,7 @@ const statusFalando = (status) => {
     const btn_limpar = document.querySelector("#btn-limpar")
     const box_fone = document.querySelector("#box-fone")
     const pare = document.querySelector("#box-pare")
-    if(status){
+    if (status) {
         box_fone.style = "visibility: visible;"
         pare.style = "visibility: visible;"
         falando = true
@@ -131,7 +131,7 @@ const statusFalando = (status) => {
         btn_falar.style.opacity = '0.5'
         btn_limpar.style.pointerEvents = 'none'
         btn_limpar.style.opacity = '0.5'
-    }else{
+    } else {
         inp_texto.disabled = false
         btn_falar.style.pointerEvents = 'auto'
         btn_falar.style.opacity = '1'
@@ -155,6 +155,9 @@ const idiomaSimples = (opcao) => {
             break;
         case 'en-US':
             bandeiras[1].classList.add('selectIdioma') // Seleciona o inglês
+            break;
+        case 'es-ES':
+            bandeiras[2].classList.add('selectIdioma') // Seleciona o espanhol
             break;
     }
 
