@@ -46,7 +46,7 @@ const checkWidth = () => {
     const box_painel = document.querySelector("#box-painel") // Seleciona o painel externo
 
     if (window.innerWidth <= width.min + 50) {
-        inp_texto.style.width = `${window.innerWidth -20}px`
+        inp_texto.style.width = `${window.innerWidth - 20}px`
         box_painel.style = "justify-content: flex-start;"
     }
     else if (string_width >= width.min && string_width <= width.max) {
@@ -159,6 +159,9 @@ const idiomaSimples = (opcao) => {
             break;
         case 'es-ES':
             bandeiras[2].classList.add('selectIdioma') // Seleciona o espanhol
+            break;
+        case 'ru-RU':
+            bandeiras[3].classList.add('selectIdioma') // Seleciona o espanhol
             break;
     }
 
