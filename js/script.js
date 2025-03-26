@@ -44,9 +44,10 @@ const clickEnter = () => {
         inp_texto.focus() // Foca novamente no input
         falar(texto) // Faz o sistema "falar" o texto digitado
     }
+    document.querySelector('#boxTeclado').classList.add('display-none') // Esconde o teclado
+    tecladoVirtual = false
     aminacao() // Aplica animações
     checkWidth() // Verifica e ajusta a largura do input
-    document.querySelector('#boxTeclado').classList.add('display-none') // Esconde o teclado
 }
 
 // Função para falar o texto do painel
@@ -102,8 +103,8 @@ const limpar = () => {
     inp_texto.value = '' // Limpa o texto no input
     painel.textContent = '' // Limpa o painel
     inp_texto.focus() // Foca no input novamente
-    checkWidth() // Verifica e ajusta a largura do input
     aminacao() // Aplica animações
+    checkWidth() // Verifica e ajusta a largura do input
 }
 
 // Captura eventos do teclado para ações específicas (Enter e Delete)
@@ -186,15 +187,19 @@ const idiomaSimples = (opcao) => {
     switch (opcao) {
         case 'pt-BR': // Português
             bandeiras[0].classList.add('selectIdioma') 
+            tecladoVirtual = false
             break;
         case 'en-US': // Inglês
-            bandeiras[1].classList.add('selectIdioma') 
+            bandeiras[1].classList.add('selectIdioma')
+            tecladoVirtual = false
             break;
         case 'es-ES': // Espanhol
             bandeiras[2].classList.add('selectIdioma') 
+            tecladoVirtual = false
             break;
         case 'it-IT': // Italiano
             bandeiras[3].classList.add('selectIdioma') 
+            tecladoVirtual = false
             break;
         case 'ru-RU': // Russo
             bandeiras[4].classList.add('selectIdioma') 
@@ -211,6 +216,12 @@ const idiomaSimples = (opcao) => {
         default:
             break;
     }
+    if(tecladoVirtual) {
+        document.querySelector('#boxTeclado').classList.remove('display-none')
+        gerarTeclado()
+    }
+    aminacao()
+    checkWidth()
 }
 
 // Função para gerar o teclado virtual com base no idioma
@@ -237,6 +248,7 @@ const gerarTeclado = () => {
         default:
             break;
     }
+    checkWidth()
 }
 
 // Função para lidar com o clique das teclas do teclado virtual
@@ -253,6 +265,7 @@ const click_teclado = (tecla_idioma, index) => {
     }
 
     inp_texto.value += letra_click // Adiciona a letra ao input
+    checkWidth()
 }
 
 // Função para alternar a visibilidade do teclado

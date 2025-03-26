@@ -128,7 +128,7 @@ body,html {
 .box-btns {
     width: 100%;
     flex-direction: row;
-    gap: 20px;
+    gap: 15px;
 }
 
 .btns {
@@ -136,55 +136,53 @@ body,html {
     padding: 10px 20px;
     font-size: 20px;
     letter-spacing: 3px;
-    background-color: #4CAF50;
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
     flex-direction: row;
+    height: 50px;
+    width: auto;
 }
 
-.btns:hover{
+.btns:hover, #btn-falar:hover, #btn-limpar:hover, #teclado:hover{
     background-color: #0078D7;
 }
 
 .btns:active {
-    transform: scale(0.98); 
-    letter-spacing: 10px;
+    transform: scale(0.8); 
+    background-color: #00FF00;
 }
 
 .btns svg {
     fill: white;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     vertical-align: middle;
 }
 
 #btn-falar {
-    width: 200px;
+    background-color: #4CAF50;
 }
 
 #btn-limpar {
-    background-color: #466bd1;
+    background-color: #B8860B;
 }
 
 #teclado {
-    background-color: black;
+    background-color: #3D3D3D;
 }
 
-#teclado svg {
-    width: 100%;
-    height: auto;
-}
+
 
 .boxTeclado {
     max-width: 600px;
-    max-height: 400px;
+    max-height: auto;
     position: absolute;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: rgba(0,0,0,0.3);
-    border-radius: 10px;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 5px;
     padding: 15px 8px;
     gap: 10px;
 }
@@ -194,15 +192,11 @@ body,html {
     text-align: center;
     width: 55px;
     height: 55px;
-    background-color:#0000FF;
+    background-color: #F8F8FF;
+    color: black;
     font-weight: 700;
     font-size: 28px;
     border-style: none;
-}
-.boxTeclado button:active{
-    transform: scale(0.5); 
-    letter-spacing: 0;
-    background-color: #00FF00;
 }
 
 #box-painel {
