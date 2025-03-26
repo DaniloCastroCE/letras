@@ -193,16 +193,19 @@ const idiomaSimples = (opcao) => {
         case 'es-ES': // Espanhol
             bandeiras[2].classList.add('selectIdioma') 
             break;
-        case 'ru-RU': // Russo
+        case 'it-IT': // Italiano
             bandeiras[3].classList.add('selectIdioma') 
+            break;
+        case 'ru-RU': // Russo
+            bandeiras[4].classList.add('selectIdioma') 
             document.querySelector('#teclado').classList.remove('display-none') // Mostra o teclado russo
             break;
         case 'ja-JP': // Japonês
-            bandeiras[4].classList.add('selectIdioma') 
+            bandeiras[5].classList.add('selectIdioma') 
             document.querySelector('#teclado').classList.remove('display-none') // Mostra o teclado japonês
             break
         case 'ko-KR': // Coreano
-            bandeiras[5].classList.add('selectIdioma') 
+            bandeiras[6].classList.add('selectIdioma') 
             document.querySelector('#teclado').classList.remove('display-none') // Mostra o teclado coreano
             break
         default:

@@ -1,5 +1,5 @@
 :root {
-    --height_box_input: 200px
+    --height_box_input: 240px
 }
 
 *{
@@ -89,6 +89,9 @@ body,html {
     flex-direction: row;
     gap: 20px;
     cursor: pointer;
+    max-width: 600px;
+    width: 100%;
+    flex-wrap: wrap
 }
 
 #idiomaSimples img {
