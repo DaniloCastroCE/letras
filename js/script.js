@@ -125,6 +125,7 @@ document.querySelector('body').addEventListener('click', (e) => {
 
 // Função para falar o texto usando a API de síntese de fala do navegador
 const falar = (texto) => {
+
     const utterance = new SpeechSynthesisUtterance(texto) // Cria a fala do texto
     utterance.lang = idioma // Define o idioma
     utterance.rate = 1 // Define a velocidade da fala
