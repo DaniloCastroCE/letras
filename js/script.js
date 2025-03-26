@@ -10,6 +10,9 @@ let falando = false
 // Define o idioma padrão como português brasileiro
 let idioma = 'pt-BR' 
 
+// Identifica se o teclado esta ativo
+let tecladoVirtual = false;
+
 // Seleciona todos os elementos com a classe 'bandeiras' no HTML
 const bandeiras = document.querySelectorAll('.bandeiras')
 
@@ -29,6 +32,7 @@ const init = () => {
     inp_texto.focus() // Foca no input de texto assim que a página carregar
     checkWidth() // Verifica e ajusta a largura do input
 }
+
 
 // Função para tratar o clique do Enter no input de texto
 const clickEnter = () => {
@@ -82,7 +86,15 @@ const checkWidth = () => {
 
 // Função de animação (pode ser utilizada para efeitos visuais)
 const aminacao = () => {
-    // Código comentado, mas pode ser ativado para mostrar uma imagem de GIF dependendo do conteúdo do painel
+    const img_gif = document.querySelector('#img-gif') // Seleciona a imagem GIF
+    const box_painel = document.querySelector('#box-painel') // Seleciona o painel externo
+    if (painel.textContent === "" && !tecladoVirtual) {
+        img_gif.style.display = "block" // Mostra o GIF se não houver texto no painel
+        box_painel.style = 'overflow-y: hidden;'
+    } else {
+        img_gif.style.display = "none" // Oculta o GIF quando houver texto
+        box_painel.style = 'overflow-y: auto;'
+    }
 }
 
 // Função para limpar o input e o painel
@@ -245,6 +257,13 @@ const click_btn_teclado = () => {
     gerarTeclado() // Gera o teclado de acordo com o idioma
     const boxTeclado = document.querySelector('#boxTeclado')
     boxTeclado.classList.toggle('display-none') // Alterna a visibilidade do teclado
+
+    if(boxTeclado.classList.contains('display-none')){
+        tecladoVirtual = false
+    }else {
+        tecladoVirtual = true
+    }
+    aminacao()
 }
 
 // Chama a função de inicialização assim que o código carrega
