@@ -1,91 +1,32 @@
-# Projeto: Aprendendo os sons das letras e números
+# Projeto de Conversão de Texto com Fala
 
-Este projeto é uma aplicação interativa que permite a digitação de um texto, que é então exibido em um painel e lido em voz alta usando a API de síntese de fala do navegador.
-
-## Índice
-
-- [Funcionalidades](#funcionalidades)
-- [Estrutura do Código](#estrutura-do-código)
-- [Como Usar](#como-usar)
-- [Requisitos](#requisitos)
-- [Possíveis Melhorias](#possíveis-melhorias)
-- [Autor](#autor)
+Este projeto permite que o usuário insira texto e o sistema converta esse texto em fala. O sistema suporta múltiplos idiomas e inclui um teclado virtual para idiomas com caracteres especiais, como russo, japonês e coreano. O texto digitado é exibido em um painel e falado em voz alta, com a capacidade de parar a fala a qualquer momento.
 
 ## Funcionalidades
 
-- **Entrada de Texto:** O usuário pode digitar um texto que será exibido no painel e lido em voz alta.
-- **Redimensionamento Dinâmico:** A largura do campo de entrada se ajusta com base no tamanho do texto e na largura da tela.
-- **Animação de Feedback:** Exibição de um GIF enquanto não há texto no painel.
-- **Seleção de Idioma:** Possibilidade de alternar entre os idiomas "pt-BR" e "en-US".
-- **Teclas de Atalho:** Pressionar `Enter` ativa a leitura do texto, e `Delete` limpa o painel.
-- **Interrupção da Fala:** Opção para parar a leitura antes do término.
+- **Entrada de Texto:** O usuário pode digitar ou clicar nas letras de um teclado virtual para inserir texto.
+- **Fala:** O texto é convertido em fala, utilizando o recurso de síntese de fala do navegador.
+- **Idiomas Suportados:** Português, Inglês, Espanhol, Russo, Japonês e Coreano.
+- **Teclado Virtual:** Para idiomas com caracteres especiais, como russo, japonês e coreano, um teclado virtual é disponibilizado para facilitar a entrada de texto.
+- **Redimensionamento do Input:** A largura do campo de texto ajusta-se automaticamente conforme o comprimento do texto ou o tamanho da janela do navegador.
+- **Animações e Interatividade:** O sistema conta com animações de entrada e feedback visual ao interagir com o sistema.
 
-## Estrutura do Código
+## Como Funciona
 
-### JavaScript
+1. **Entrada de Texto:** O usuário pode digitar no campo de entrada ou clicar nas letras do teclado virtual.
+2. **Conversão de Texto em Fala:** Ao pressionar "Enter" ou interagir com o sistema, o texto digitado será exibido no painel e pronunciado em voz alta.
+3. **Seleção de Idioma:** O idioma de síntese de fala pode ser alterado clicando nas bandeiras dos idiomas disponíveis.
+4. **Teclado Virtual:** Para idiomas como russo, japonês e coreano, um teclado especial aparece para o usuário selecionar caracteres especiais.
 
-1. **Configurações Iniciais**
-   - Define os tamanhos mínimos e máximos do campo de entrada (`width`).
-   - Inicializa o idioma padrão (`pt-BR`).
-   - Seleciona elementos do DOM para interação.
+## Tecnologias Utilizadas
 
-2. **Função `init()`**
-   - Aplica animação inicial.
-   - Define o idioma padrão visualmente.
-   - Ajusta o tamanho da caixa de entrada e coloca o cursor automaticamente.
-
-3. **Função `clickEnter()`**
-   - Verifica se o texto foi digitado.
-   - Exibe o texto no painel.
-   - Limpa a entrada e inicia a síntese de fala.
-
-4. **Função `onPainel()`**
-   - Reproduz o texto do painel caso não esteja sendo lido no momento.
-
-5. **Eventos de Entrada e Redimensionamento**
-   - Ajusta a largura do campo de texto dinamicamente (`checkWidth()`).
-
-6. **Função `falar(texto)`**
-   - Utiliza a API `SpeechSynthesisUtterance` para converter texto em fala.
-
-7. **Função `pararFala()`**
-   - Cancela a síntese de fala caso esteja ativa.
-
-8. **Controle de Interface (`statusFalando()`)**
-   - Ativa ou desativa botões enquanto o texto está sendo lido.
-
-9. **Função `idiomaSimples(opcao)`**
-   - Permite a mudança de idioma entre português e inglês.
-
-10. **Eventos Globais (`keydown` e `click`)**
-    - `Enter`: Inicia a leitura do texto.
-    - `Delete`: Limpa o painel.
-    - `Click`: Mantém o foco na entrada de texto.
-
-### CSS
-
-- Define estilos de fontes e responsividade.
-- Configura a aparência dos botões e do painel.
-- Inclui animação para ícones de feedback.
-
-## Como Usar
-
-1. Digite um texto na caixa de entrada.
-2. Pressione `Enter` ou clique no botão de falar para ouvir o texto.
-3. Clique no painel para repetir a leitura.
-4. Use `Delete` para limpar o painel.
-5. Altere o idioma clicando nas bandeiras.
-6. Para interromper a fala, clique no ícone de parar.
-
+- **HTML5**
+- **CSS3** (Para estilo e animações)
+- **JavaScript** (Para funcionalidades interativas)
+- **SpeechSynthesis API** (Para conversão de texto em fala)
 ## Requisitos
 
 - Um navegador compatível com a API de síntese de fala (Chrome, Firefox, Edge, etc.).
-
-## Possíveis Melhorias
-
-- Adicionar mais idiomas.
-- Permitir ajuste na velocidade da fala.
-- Melhorar a acessibilidade com suporte a leitores de tela.
 
 ## Autor
 
