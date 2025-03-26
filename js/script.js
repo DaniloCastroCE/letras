@@ -1,171 +1,251 @@
-const width = { min: 375, max: 600 } // Define os limites de largura do input
-let falando = false // Indica se o sistema está falando
-let idioma = 'pt-BR' // Define o idioma padrão
-const bandeiras = document.querySelectorAll('.bandeiras') // Seleciona todas as bandeiras
-const inp_texto = document.querySelector('#inp-texto') // Seleciona o input de texto
-inp_texto.style.width = `${width.min}px` // Define a largura inicial do input
-const painel = document.querySelector("#painel") // Seleciona o painel onde o texto será exibido
+// Definindo os limites de largura do input (mínima e máxima)
+const width = { min: 375, max: 600 } 
 
+// Inicializa o array de letras para diferentes idiomas (exemplo: russo, japonês, coreano)
+const letras = new Letras() 
+
+// Variável para controlar se o sistema está falando ou não
+let falando = false 
+
+// Define o idioma padrão como português brasileiro
+let idioma = 'pt-BR' 
+
+// Seleciona todos os elementos com a classe 'bandeiras' no HTML
+const bandeiras = document.querySelectorAll('.bandeiras')
+
+// Seleciona o input de texto no HTML
+const inp_texto = document.querySelector('#inp-texto')
+
+// Inicializa a largura do input para a largura mínima
+inp_texto.style.width = `${width.min}px`
+
+// Seleciona o painel onde o texto será exibido
+const painel = document.querySelector("#painel") 
+
+// Função de inicialização para configurar o comportamento inicial
 const init = () => {
     aminacao() // Aplica animações iniciais
-    bandeiras[0].classList.add('selectIdioma') // Seleciona o idioma padrão
-    inp_texto.focus() // Foca no input de texto
-    checkWidth() // Ajusta a largura do input
+    bandeiras[0].classList.add('selectIdioma') // Marca a bandeira do idioma padrão (português)
+    inp_texto.focus() // Foca no input de texto assim que a página carregar
+    checkWidth() // Verifica e ajusta a largura do input
 }
 
+// Função para tratar o clique do Enter no input de texto
 const clickEnter = () => {
-    if (inp_texto.value.trim()) {
-        statusFalando(true) // Atualiza o status para "falando"
-        const texto = inp_texto.value.trim()
+    if (inp_texto.value.trim()) { // Verifica se o input não está vazio
+        statusFalando(true) // Marca que o sistema está falando
+        const texto = inp_texto.value.trim() // Pega o texto digitado
         painel.textContent = texto.toUpperCase() // Exibe o texto no painel em maiúsculas
-        inp_texto.value = '' // Limpa o input
+        inp_texto.value = '' // Limpa o campo de texto
         inp_texto.focus() // Foca novamente no input
-        falar(texto) // Inicia a fala do texto
+        falar(texto) // Faz o sistema "falar" o texto digitado
     }
     aminacao() // Aplica animações
-    checkWidth() // Ajusta a largura do input
+    checkWidth() // Verifica e ajusta a largura do input
+    document.querySelector('#boxTeclado').classList.add('display-none') // Esconde o teclado
 }
 
+// Função para falar o texto do painel
 const onPainel = () => {
-    const texto = painel.textContent
-
-    if (!falando) {
-        statusFalando(true) // Atualiza o status para "falando"
-        falar(texto) // Fala o texto do painel
+    const texto = painel.textContent // Pega o texto do painel
+    if (!falando) { // Se o sistema não está falando
+        statusFalando(true) // Marca que o sistema está falando
+        falar(texto) // Faz o sistema falar o texto
     }
 }
 
-// Ajusta a largura do input ao digitar
+// Função para ajustar a largura do input ao digitar
 inp_texto.addEventListener('input', () => checkWidth())
 
-// Ajusta a largura do input ao redimensionar a janela
+// Função para ajustar a largura do input ao redimensionar a janela
 window.addEventListener('resize', () => checkWidth())
 
+// Função para verificar e ajustar a largura do input com base no conteúdo
 const checkWidth = () => {
     const string_width = inp_texto.value.length * 20 // Calcula a largura do texto digitado
-    const box_painel = document.querySelector("#box-painel") // Seleciona o painel externo
+    const box_painel = document.querySelector("#box-painel") // Pega o painel externo
 
-    if (window.innerWidth <= width.min + 50) {
-        inp_texto.style.width = `${window.innerWidth - 20}px`
-        box_painel.style = "justify-content: flex-start;"
-    }
-    else if (string_width >= width.min && string_width <= width.max) {
-        inp_texto.style.width = `${string_width}px`
-        box_painel.style = "justify-content: center;"
-    }
-    else if (string_width > width.max) {
-        inp_texto.style.width = `${width.max}px`
-        box_painel.style = "justify-content: center;"
-    }
-    else if (string_width < parseInt(width.min)) {
-        inp_texto.style.width = `${width.min}px`
-        box_painel.style = "justify-content: center;"
+    if (window.innerWidth <= width.min + 50) { // Se a largura da janela for pequena
+        inp_texto.style.width = `${window.innerWidth - 20}px` // Ajusta a largura do input
+        box_painel.style = "justify-content: flex-start;" // Alinha o painel à esquerda
+    } else if (string_width >= width.min && string_width <= width.max) {
+        inp_texto.style.width = `${string_width}px` // Ajusta a largura do input com base no texto
+        box_painel.style = "justify-content: center;" // Alinha o painel ao centro
+    } else if (string_width > width.max) {
+        inp_texto.style.width = `${width.max}px` // Limita a largura do input
+        box_painel.style = "justify-content: center;" // Alinha o painel ao centro
+    } else if (string_width < parseInt(width.min)) {
+        inp_texto.style.width = `${width.min}px` // Garante que o input não seja menor que a largura mínima
+        box_painel.style = "justify-content: center;" // Alinha o painel ao centro
     }
 }
 
+// Função de animação (pode ser utilizada para efeitos visuais)
 const aminacao = () => {
-    const img_gif = document.querySelector('#img-gif') // Seleciona a imagem GIF
-    const box_painel = document.querySelector('#box-painel') // Seleciona o painel externo
-    if (painel.textContent === "") {
-        img_gif.style.display = "block" // Mostra o GIF se não houver texto no painel
-        box_painel.style = 'overflow-y: hidden;'
-    } else {
-        img_gif.style.display = "none" // Oculta o GIF quando houver texto
-        box_painel.style = 'overflow-y: auto;'
-    }
+    // Código comentado, mas pode ser ativado para mostrar uma imagem de GIF dependendo do conteúdo do painel
 }
 
+// Função para limpar o input e o painel
 const limpar = () => {
-    inp_texto.value = '' // Limpa o input
+    inp_texto.value = '' // Limpa o texto no input
     painel.textContent = '' // Limpa o painel
-    inp_texto.focus() // Foca no input
-    checkWidth() // Ajusta a largura do input
+    inp_texto.focus() // Foca no input novamente
+    checkWidth() // Verifica e ajusta a largura do input
     aminacao() // Aplica animações
 }
 
-// Captura eventos do teclado para ativar funções específicas
+// Captura eventos do teclado para ações específicas (Enter e Delete)
 document.querySelector('body').addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !falando) {
-        inp_texto.style.width = `${width.min}px`
-        clickEnter() // Aciona o evento de "Enter"
-    } else if (e.key === 'Delete' && !falando) {
-        inp_texto.style.width = `${width.min}px`
-        limpar() // Aciona a função de limpar
+    if (e.key === 'Enter' && !falando) { // Se a tecla pressionada for Enter
+        inp_texto.style.width = `${width.min}px` // Redefine a largura do input
+        clickEnter() // Chama a função para processar o clique no Enter
+    } else if (e.key === 'Delete' && !falando) { // Se a tecla pressionada for Delete
+        inp_texto.style.width = `${width.min}px` // Redefine a largura do input
+        limpar() // Chama a função para limpar o input e o painel
     }
 })
 
-// Mantém o foco no input ao clicar na tela
+// Mantém o foco no input quando o usuário clica na tela
 document.querySelector('body').addEventListener('click', (e) => {
     inp_texto.focus()
 })
 
+// Função para falar o texto usando a API de síntese de fala do navegador
 const falar = (texto) => {
     const utterance = new SpeechSynthesisUtterance(texto) // Cria a fala do texto
     utterance.lang = idioma // Define o idioma
-    utterance.rate = 1 // Define a velocidade
-    utterance.pitch = 1 // Define o tom
-    utterance.volume = 1 // Define o volume
+    utterance.rate = 1 // Define a velocidade da fala
+    utterance.pitch = 1 // Define o tom da fala
+    utterance.volume = 1 // Define o volume da fala
 
-    utterance.onend = () => {
-        statusFalando(false) // Atualiza o status após a fala
+    utterance.onend = () => { // Quando a fala terminar
+        statusFalando(false) // Marca que o sistema terminou de falar
     }
 
     window.speechSynthesis.speak(utterance) // Executa a fala
 }
 
+// Função para parar a fala
 const pararFala = () => {
-    window.speechSynthesis.cancel(); // Para a fala
-    statusFalando(false)
+    window.speechSynthesis.cancel(); // Para a fala imediatamente
+    statusFalando(false) // Marca que o sistema não está falando
 };
 
+// Função para atualizar o status de "falando"
 const statusFalando = (status) => {
     const btn_falar = document.querySelector("#btn-falar")
     const btn_limpar = document.querySelector("#btn-limpar")
     const box_fone = document.querySelector("#box-fone")
     const pare = document.querySelector("#box-pare")
-    if (status) {
-        box_fone.style = "visibility: visible;"
-        pare.style = "visibility: visible;"
-        falando = true
-        inp_texto.disabled = true
-        btn_falar.style.pointerEvents = 'none'
-        btn_falar.style.opacity = '0.5'
-        btn_limpar.style.pointerEvents = 'none'
-        btn_limpar.style.opacity = '0.5'
-    } else {
-        inp_texto.disabled = false
-        btn_falar.style.pointerEvents = 'auto'
-        btn_falar.style.opacity = '1'
-        btn_limpar.style.pointerEvents = 'auto'
-        btn_limpar.style.opacity = '1'
-        inp_texto.focus()
-        falando = false
-        box_fone.style = "visibility: hidden;"
-        pare.style = "visibility: hidden;"
+    
+    if (status) { // Se estiver falando
+        box_fone.style = "visibility: visible;" // Torna visível o ícone de fone de ouvido
+        pare.style = "visibility: visible;" // Torna visível o botão de parar
+        falando = true // Marca como "falando"
+        inp_texto.disabled = true // Desabilita o input de texto
+        btn_falar.style.pointerEvents = 'none' // Desabilita o botão de falar
+        btn_falar.style.opacity = '0.5' // Torna o botão de falar opaco
+        btn_limpar.style.pointerEvents = 'none' // Desabilita o botão de limpar
+        btn_limpar.style.opacity = '0.5' // Torna o botão de limpar opaco
+    } else { // Se não estiver falando
+        inp_texto.disabled = false // Habilita o input de texto
+        btn_falar.style.pointerEvents = 'auto' // Habilita o botão de falar
+        btn_falar.style.opacity = '1' // Restaura a opacidade do botão de falar
+        btn_limpar.style.pointerEvents = 'auto' // Habilita o botão de limpar
+        btn_limpar.style.opacity = '1' // Restaura a opacidade do botão de limpar
+        inp_texto.focus() // Foca no input de texto
+        falando = false // Marca como "não falando"
+        box_fone.style = "visibility: hidden;" // Oculta o ícone de fone de ouvido
+        pare.style = "visibility: hidden;" // Oculta o botão de parar
     }
 }
 
+// Função para alternar entre os idiomas e mostrar o teclado virtual
 const idiomaSimples = (opcao) => {
+    document.querySelector('#teclado').classList.add('display-none') // Esconde o teclado
+    document.querySelector('#boxTeclado').classList.add('display-none') // Esconde o box do teclado
     bandeiras.forEach(el => {
-        el.classList.remove('selectIdioma') // Remove a classe de todas as bandeiras
+        el.classList.remove('selectIdioma') // Remove a classe de seleção das bandeiras
     })
 
+    idioma = opcao // Atualiza o idioma escolhido
+
+    // Altera o idioma selecionado com base na opção
     switch (opcao) {
-        case 'pt-BR':
-            bandeiras[0].classList.add('selectIdioma') // Seleciona o português
+        case 'pt-BR': // Português
+            bandeiras[0].classList.add('selectIdioma') 
             break;
-        case 'en-US':
-            bandeiras[1].classList.add('selectIdioma') // Seleciona o inglês
+        case 'en-US': // Inglês
+            bandeiras[1].classList.add('selectIdioma') 
             break;
-        case 'es-ES':
-            bandeiras[2].classList.add('selectIdioma') // Seleciona o espanhol
+        case 'es-ES': // Espanhol
+            bandeiras[2].classList.add('selectIdioma') 
             break;
-        case 'ru-RU':
-            bandeiras[3].classList.add('selectIdioma') // Seleciona o espanhol
+        case 'ru-RU': // Russo
+            bandeiras[3].classList.add('selectIdioma') 
+            document.querySelector('#teclado').classList.remove('display-none') // Mostra o teclado russo
+            break;
+        case 'ja-JP': // Japonês
+            bandeiras[4].classList.add('selectIdioma') 
+            document.querySelector('#teclado').classList.remove('display-none') // Mostra o teclado japonês
+            break
+        case 'ko-KR': // Coreano
+            bandeiras[5].classList.add('selectIdioma') 
+            document.querySelector('#teclado').classList.remove('display-none') // Mostra o teclado coreano
+            break
+        default:
             break;
     }
-
-    idioma = opcao // Atualiza o idioma
 }
 
-init() // Inicializa o sistema
+// Função para gerar o teclado virtual com base no idioma
+const gerarTeclado = () => {
+    const boxTeclado = document.querySelector('#boxTeclado')
+    boxTeclado.innerHTML = '' // Limpa o conteúdo do teclado
+    switch (idioma) {
+        case 'ru-RU':
+            letras.russo.forEach((el, index) => {
+                boxTeclado.innerHTML += `<button class="btns centralizar" onclick="click_teclado('${idioma}','${index}')">${el.html}</button>`
+            })
+            break;
+        case 'ja-JP':
+            letras.japones.forEach((el, index) => {
+                boxTeclado.innerHTML += `<button class="btns centralizar" onclick="click_teclado('${idioma}','${index}')">${el.html}</button>`
+            })
+            break;
+        case 'ko-KR':
+            letras.coreano.forEach((el, index) => {
+                boxTeclado.innerHTML += `<button class="btns centralizar" onclick="click_teclado('${idioma}','${index}')">${el.html}</button>`
+            })
+            break;
+
+        default:
+            break;
+    }
+}
+
+// Função para lidar com o clique das teclas do teclado virtual
+const click_teclado = (tecla_idioma, index) => {
+    let letra_click = ''
+    if (tecla_idioma === 'ru-RU') {
+        letra_click = letras.russo[index].char
+    }
+    else if (tecla_idioma === 'ja-JP') {
+        letra_click = letras.japones[index].char
+    }
+    else if (tecla_idioma === 'ko-KR') {
+        letra_click = letras.coreano[index].char
+    }
+
+    inp_texto.value += letra_click // Adiciona a letra ao input
+}
+
+// Função para alternar a visibilidade do teclado
+const click_btn_teclado = () => {
+    gerarTeclado() // Gera o teclado de acordo com o idioma
+    const boxTeclado = document.querySelector('#boxTeclado')
+    boxTeclado.classList.toggle('display-none') // Alterna a visibilidade do teclado
+}
+
+// Chama a função de inicialização assim que o código carrega
+init()

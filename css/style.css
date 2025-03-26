@@ -1,5 +1,5 @@
 :root {
-    --height_box_input: 180px
+    --height_box_input: 200px
 }
 
 *{
@@ -52,9 +52,7 @@ body,html {
     flex-direction: column;
 }
 
-.display-none {
-    display: none;
-}
+
 
 .icons {
     display: fixed;
@@ -143,7 +141,7 @@ body,html {
 }
 
 .btns:hover{
-    background-color: #45a049;
+    background-color: #0078D7;
 }
 
 .btns:active {
@@ -164,6 +162,44 @@ body,html {
 
 #btn-limpar {
     background-color: #466bd1;
+}
+
+#teclado {
+    background-color: black;
+}
+
+#teclado svg {
+    width: 100%;
+    height: auto;
+}
+
+.boxTeclado {
+    max-width: 600px;
+    max-height: 400px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 15px 8px;
+    gap: 10px;
+}
+
+.boxTeclado button {
+    padding: 5px 10px;
+    text-align: center;
+    width: 55px;
+    height: 55px;
+    background-color:#0000FF;
+    font-weight: 700;
+    font-size: 28px;
+    border-style: none;
+}
+.boxTeclado button:active{
+    transform: scale(0.5); 
+    letter-spacing: 0;
+    background-color: #00FF00;
 }
 
 #box-painel {
@@ -223,5 +259,8 @@ body,html {
 }
 
 
+.display-none {
+    display: none;
+}
 
 

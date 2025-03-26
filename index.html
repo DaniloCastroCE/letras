@@ -35,6 +35,11 @@
                 <img id="us" class="bandeiras" src="https://flagcdn.com/us.svg" alt="Estados Unidos" onclick="idiomaSimples('en-US')">
                 <img id="es" class="bandeiras" src="https://flagcdn.com/es.svg" alt="Espanha" onclick="idiomaSimples('es-ES')">
                 <img id="ru" class="bandeiras" src="https://flagcdn.com/ru.svg" alt="Russia" onclick="idiomaSimples('ru-RU')">
+                <img id="ja" class="bandeiras display-none" src="https://flagcdn.com/jp.svg" alt="Japones" onclick="idiomaSimples('ja-JP')">
+                <img id="ko" class="bandeiras display-none" src="https://flagcdn.com/kr.svg" alt="Coreano" onclick="idiomaSimples('ko-KR')">
+
+            </div>
+            <div>
             </div>
             <input class="input tektur-letras" id="inp-texto" type="text">
             <div class="box-btns centralizar">
@@ -59,13 +64,25 @@
                             d="M440-520h80v-280q0-17-11.5-28.5T480-840q-17 0-28.5 11.5T440-800v280ZM200-360h560v-80H200v80Zm-58 240h98v-80q0-17 11.5-28.5T280-240q17 0 28.5 11.5T320-200v80h120v-80q0-17 11.5-28.5T480-240q17 0 28.5 11.5T520-200v80h120v-80q0-17 11.5-28.5T680-240q17 0 28.5 11.5T720-200v80h98l-40-160H182l-40 160Zm676 80H142q-39 0-63-31t-14-69l55-220v-80q0-33 23.5-56.5T200-520h160v-280q0-50 35-85t85-35q50 0 85 35t35 85v280h160q33 0 56.5 23.5T840-440v80l55 220q13 38-11.5 69T818-40Zm-58-400H200h560Zm-240-80h-80 80Z"/>
                     </svg>
                 </button>
+                <button id="teclado" class="lilita-one-regular centralizar btns display-none" onclick="click_btn_teclado()"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        height="24px" 
+                        viewBox="0 -960 960 960" 
+                        width="24px" 
+                        fill="#1f1f1f">
+                        <path 
+                            d="M120-160q-33 0-56.5-23.5T40-240v-480q0-33 23.5-56.5T120-800h720q33 0 56.5 23.5T920-720v480q0 33-23.5 56.5T840-160H120Zm0-80h720v-480H120v480Zm200-40h320v-80H320v80ZM200-420h80v-80h-80v80Zm160 0h80v-80h-80v80Zm160 0h80v-80h-80v80Zm160 0h80v-80h-80v80ZM200-560h80v-80h-80v80Zm160 0h80v-80h-80v80Zm160 0h80v-80h-80v80Zm160 0h80v-80h-80v80ZM120-240v-480 480Z"/>
+                    </svg>
+                </button>
             </div>
         </div>
         <div class="centralizar" id="box-painel">
             <p id="painel" class="barriecito-regular centralizar" onclick="onPainel()"></p>
-            <img src="./img/gif.gif" alt="gif animado" id="img-gif">
+            <!--<img src="./img/gif.gif" alt="gif animado" id="img-gif">-->
+            <div id="boxTeclado" class="boxTeclado display-none"></div>
         </div>
     </div>
+    <script src="./js/letras.js"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>
