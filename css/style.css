@@ -1,6 +1,6 @@
 :root {
     --height_box_input: 240px;
-    --height_box_config: 35px;
+    --height_box_config: 45px;
 }
 
 * {
@@ -86,10 +86,8 @@ html {
 }
 
 .modal-close svg:hover{
-    fill: #0078D7;
     transform: scale(1.2);
-    transition: 0.5s ease all;
-    
+    transition: 0.5s ease all;    
 }
 
 .cards {
@@ -193,7 +191,7 @@ html {
     display: flex;
     justify-content: start;
     gap: 10px;
-    padding: 3px 10px;
+    padding: 5px 10px 3px;
 }
 
 .menu-btns {
@@ -210,6 +208,11 @@ html {
     height: auto;
     fill: white;
     font-weight: 700;
+}
+
+.menu-btns:hover {
+    transform: scale(1.2);
+    transition: 0.5s ease all;
 }
 
 #box-input {
