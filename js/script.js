@@ -151,6 +151,7 @@ const statusFalando = (status) => {
     const btn_limpar = document.querySelector("#btn-limpar")
     const box_fone = document.querySelector("#box-fone")
     const pare = document.querySelector("#box-pare")
+    const menu = document.querySelector("#menu")
     
     if (status) { // Se estiver falando
         box_fone.style = "visibility: visible;" // Torna visível o ícone de fone de ouvido
@@ -161,12 +162,17 @@ const statusFalando = (status) => {
         btn_falar.style.opacity = '0.5' // Torna o botão de falar opaco
         btn_limpar.style.pointerEvents = 'none' // Desabilita o botão de limpar
         btn_limpar.style.opacity = '0.5' // Torna o botão de limpar opaco
+        menu.style.pointerEvents = 'none'
+        menu.style.opacity = '0.5'
+
     } else { // Se não estiver falando
         inp_texto.disabled = false // Habilita o input de texto
         btn_falar.style.pointerEvents = 'auto' // Habilita o botão de falar
         btn_falar.style.opacity = '1' // Restaura a opacidade do botão de falar
         btn_limpar.style.pointerEvents = 'auto' // Habilita o botão de limpar
         btn_limpar.style.opacity = '1' // Restaura a opacidade do botão de limpar
+        menu.style.pointerEvents = 'auto'
+        menu.style.opacity = '1'
         inp_texto.focus() // Foca no input de texto
         falando = false // Marca como "não falando"
         box_fone.style = "visibility: hidden;" // Oculta o ícone de fone de ouvido
@@ -223,6 +229,41 @@ const idiomaSimples = (opcao) => {
     }
     aminacao()
     checkWidth()
+}
+
+// Função dedicada apenas para abrir ou fechar o modal para selecionar os idiomas
+const selecionarIdiomas = (op) => {
+    const modal = document.querySelector('#modal')
+
+    if(op === undefined){
+        modal.classList.toggle('display-none')
+    }
+    else if(op === 'close' || op === 'body'){
+        modal.classList.add('display-none')
+
+    }else if(op === 'open') {
+        modal.classList.remove('display-none')
+    }
+    else if(typeof(op) === 'object'){
+        if(op.target.id === 'modal'){
+            //modal.classList.add('display-none')
+        }
+    }
+}
+
+// FUnção para deixar os cards dos idiomas  com aspecto de selecionado
+const card_seleciona_lang = (obj, lang) => {
+    const img = document.querySelector(`#img-${lang}`)
+    obj.classList.toggle('card-selected')
+    if(obj.classList.contains('card-selected')){
+        img.classList.remove('display-none')
+    }else {
+        img.classList.add('display-none')
+        if(lang === idioma.slice(3,6).toLowerCase()){ // verificar se o idioma removido é o que esta selcionado
+            idiomaSimples('pt-BR') // deixa o idioma padrao para português
+        }
+    }
+
 }
 
 // Função para gerar o teclado virtual com base no idioma

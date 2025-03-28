@@ -11,7 +11,60 @@
     </style>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body class="centralizar">
+<body class="centralizar" onclick="selecionarIdiomas(event)">
+    <div id="modal" class="modal centralizar display-none">
+        <div class="modal-container">
+            <div class="modal-close" >
+                <svg onclick="selecionarIdiomas('close')" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    height="24px" 
+                    viewBox="0 -960 960 960" 
+                    width="24px" 
+                    fill="#273b6e">
+                    <path 
+                        d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/>
+                </svg>
+            </div>
+            <div class="cards">
+                <div class="card centralizar card-selected">
+                    <img class="card-bandeiras" src="https://flagcdn.com/br.svg" alt="basil">
+                    <p class="pais lilita-one-regular">BRASIL</p>
+                    <p class="card-lang">Português</p>
+                </div>
+                <div class="card centralizar card-selected" onclick="card_seleciona_lang(this , 'us')">
+                    <img class="card-bandeiras" src="https://flagcdn.com/us.svg" alt="estados unidos">
+                    <p class="pais lilita-one-regular">ESTADOS UNIDOS</p>
+                    <p class="card-lang">Inglês</p>
+                </div>
+                <div class="card centralizar card-selected" onclick="card_seleciona_lang(this , 'es')">
+                    <img class="card-bandeiras" src="https://flagcdn.com/es.svg" alt="espanha">
+                    <p class="pais lilita-one-regular">ESPANHA</p>
+                    <p class="card-lang">Espanhol</p>
+                </div>
+                <div class="card centralizar " onclick="card_seleciona_lang(this , 'it')">
+                    <img class="card-bandeiras" src="https://flagcdn.com/it.svg" alt="itália">
+                    <p class="pais lilita-one-regular">ITÁLIA</p>
+                    <p class="card-lang">Italiano</p>
+                </div>
+                <div class="card centralizar" onclick="card_seleciona_lang(this , 'ru')">
+                    <img class="card-bandeiras" src="https://flagcdn.com/ru.svg" alt="russia">
+                    <p class="pais lilita-one-regular">RÚSSIA</p>
+                    <p class="card-lang">Russo</p>
+                </div>
+                <div class="card centralizar" onclick="card_seleciona_lang(this , 'jp')">
+                    <img class="card-bandeiras" src="https://flagcdn.com/jp.svg" alt="japão">
+                    <p class="pais lilita-one-regular">JAPÃO</p>
+                    <p class="card-lang">Japonês</p>
+                </div>
+                <div class="card centralizar" onclick="card_seleciona_lang(this , 'kr')">
+                    <img class="card-bandeiras" src="https://flagcdn.com/kr.svg" alt="corea do sul">
+                    <p class="pais lilita-one-regular">COREA DO SUL</p>
+                    <p class="card-lang">Coreano</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="icons" id="box-fone">
         <svg 
             xmlns="http://www.w3.org/2000/svg" 
@@ -29,15 +82,29 @@
     </div>
     
     <div class="bloco centralizar">
+        <div id="menu" class="menu">
+            <button class="menu-btns centralizar" onclick="selecionarIdiomas()">
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    height="24px" 
+                    viewBox="0 -960 960 960" 
+                    width="24px" 
+                    fill="#273b6e">
+                    <path 
+                        d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131Zm-80-29L280-360H120v-240h160l200-200v640Zm80-160v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320Zm-160-34v-252l-86 86H200v80h114l86 86ZM40-680v-240h240v80H120v160H40ZM680-40v-80h160v-160h80v240H680ZM300-480Z"/>
+                </svg>
+
+            </button>
+        </div>
         <div id="box-input">
             <div id="idiomaSimples" class="centralizar">
-                <img id="br" class="bandeiras" src="https://flagcdn.com/br.svg" alt="basil" onclick="idiomaSimples('pt-BR')">
-                <img id="us" class="bandeiras" src="https://flagcdn.com/us.svg" alt="Estados Unidos" onclick="idiomaSimples('en-US')">
-                <img id="es" class="bandeiras" src="https://flagcdn.com/es.svg" alt="Espanha" onclick="idiomaSimples('es-ES')">
-                <img id="it" class="bandeiras" src="https://flagcdn.com/it.svg" alt="Italia" onclick="idiomaSimples('it-IT')">
-                <img id="ru" class="bandeiras" src="https://flagcdn.com/ru.svg" alt="Russia" onclick="idiomaSimples('ru-RU')">
-                <img id="ja" class="bandeiras" src="https://flagcdn.com/jp.svg" alt="Japão" onclick="idiomaSimples('ja-JP')">
-                <img id="ko" class="bandeiras display-none" src="https://flagcdn.com/kr.svg" alt="Corea" onclick="idiomaSimples('ko-KR')">
+                <img id="img-br" class="bandeiras" src="https://flagcdn.com/br.svg" alt="basil" onclick="idiomaSimples('pt-BR')">
+                <img id="img-us" class="bandeiras" src="https://flagcdn.com/us.svg" alt="Estados Unidos" onclick="idiomaSimples('en-US')">
+                <img id="img-es" class="bandeiras" src="https://flagcdn.com/es.svg" alt="Espanha" onclick="idiomaSimples('es-ES')">
+                <img id="img-it" class="bandeiras display-none" src="https://flagcdn.com/it.svg" alt="Italia" onclick="idiomaSimples('it-IT')">
+                <img id="img-ru" class="bandeiras display-none" src="https://flagcdn.com/ru.svg" alt="Russia" onclick="idiomaSimples('ru-RU')">
+                <img id="img-jp" class="bandeiras display-none" src="https://flagcdn.com/jp.svg" alt="Japão" onclick="idiomaSimples('ja-JP')">
+                <img id="img-kr" class="bandeiras display-none" src="https://flagcdn.com/kr.svg" alt="Corea" onclick="idiomaSimples('ko-KR')">
 
             </div>
             <div>
