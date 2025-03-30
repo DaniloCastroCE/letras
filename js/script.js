@@ -120,7 +120,11 @@ document.querySelector('body').addEventListener('keydown', (e) => {
 
 // Mantém o foco no input quando o usuário clica na tela
 document.querySelector('body').addEventListener('click', (e) => {
-    inp_texto.focus()
+    const modal = document.querySelector('#modal')
+
+    if(modal.classList.contains('display-none')){
+        inp_texto.focus()
+    }
 })
 
 // Função para falar o texto usando a API de síntese de fala do navegador

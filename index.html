@@ -12,54 +12,57 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body class="centralizar" onclick="selecionarIdiomas(event)">
-    <div id="modal" class="modal centralizar display-none">
-        <div class="modal-container">
-            <div class="modal-close" >
-                <svg onclick="selecionarIdiomas('close')" 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    height="24px" 
-                    viewBox="0 -960 960 960" 
-                    width="24px" 
-                    fill="#273b6e">
-                    <path 
-                        d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/>
-                </svg>
-            </div>
-            <div class="cards">
-                <div class="card centralizar card-selected">
-                    <img class="card-bandeiras" src="https://flagcdn.com/br.svg" alt="basil">
-                    <p class="pais lilita-one-regular">BRASIL</p>
-                    <p class="card-lang">Português</p>
+    <div id="modal" class="modal display-none">
+        <div class="modal-branco centralizar">
+
+            <div class="modal-container">
+                <div class="modal-close" >
+                    <svg onclick="selecionarIdiomas('close')" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        height="24px" 
+                        viewBox="0 -960 960 960" 
+                        width="24px" 
+                        fill="#273b6e">
+                        <path 
+                            d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/>
+                    </svg>
                 </div>
-                <div class="card centralizar card-selected" onclick="card_seleciona_lang(this , 'us')">
-                    <img class="card-bandeiras" src="https://flagcdn.com/us.svg" alt="estados unidos">
-                    <p class="pais lilita-one-regular">ESTADOS UNIDOS</p>
-                    <p class="card-lang">Inglês</p>
-                </div>
-                <div class="card centralizar card-selected" onclick="card_seleciona_lang(this , 'es')">
-                    <img class="card-bandeiras" src="https://flagcdn.com/es.svg" alt="espanha">
-                    <p class="pais lilita-one-regular">ESPANHA</p>
-                    <p class="card-lang">Espanhol</p>
-                </div>
-                <div class="card centralizar " onclick="card_seleciona_lang(this , 'it')">
-                    <img class="card-bandeiras" src="https://flagcdn.com/it.svg" alt="itália">
-                    <p class="pais lilita-one-regular">ITÁLIA</p>
-                    <p class="card-lang">Italiano</p>
-                </div>
-                <div class="card centralizar" onclick="card_seleciona_lang(this , 'ru')">
-                    <img class="card-bandeiras" src="https://flagcdn.com/ru.svg" alt="russia">
-                    <p class="pais lilita-one-regular">RÚSSIA</p>
-                    <p class="card-lang">Russo</p>
-                </div>
-                <div class="card centralizar" onclick="card_seleciona_lang(this , 'jp')">
-                    <img class="card-bandeiras" src="https://flagcdn.com/jp.svg" alt="japão">
-                    <p class="pais lilita-one-regular">JAPÃO</p>
-                    <p class="card-lang">Japonês</p>
-                </div>
-                <div class="card centralizar" onclick="card_seleciona_lang(this , 'kr')">
-                    <img class="card-bandeiras" src="https://flagcdn.com/kr.svg" alt="corea do sul">
-                    <p class="pais lilita-one-regular">COREA DO SUL</p>
-                    <p class="card-lang">Coreano</p>
+                <div class="cards">
+                    <div class="card centralizar card-selected">
+                        <img class="card-bandeiras" src="https://flagcdn.com/br.svg" alt="basil">
+                        <p class="pais lilita-one-regular">BRASIL</p>
+                        <p class="card-lang">Português</p>
+                    </div>
+                    <div class="card centralizar card-selected" onclick="card_seleciona_lang(this , 'us')">
+                        <img class="card-bandeiras" src="https://flagcdn.com/us.svg" alt="estados unidos">
+                        <p class="pais lilita-one-regular">ESTADOS UNIDOS</p>
+                        <p class="card-lang">Inglês</p>
+                    </div>
+                    <div class="card centralizar card-selected" onclick="card_seleciona_lang(this , 'es')">
+                        <img class="card-bandeiras" src="https://flagcdn.com/es.svg" alt="espanha">
+                        <p class="pais lilita-one-regular">ESPANHA</p>
+                        <p class="card-lang">Espanhol</p>
+                    </div>
+                    <div class="card centralizar " onclick="card_seleciona_lang(this , 'it')">
+                        <img class="card-bandeiras" src="https://flagcdn.com/it.svg" alt="itália">
+                        <p class="pais lilita-one-regular">ITÁLIA</p>
+                        <p class="card-lang">Italiano</p>
+                    </div>
+                    <div class="card centralizar" onclick="card_seleciona_lang(this , 'ru')">
+                        <img class="card-bandeiras" src="https://flagcdn.com/ru.svg" alt="russia">
+                        <p class="pais lilita-one-regular">RÚSSIA</p>
+                        <p class="card-lang">Russo</p>
+                    </div>
+                    <div class="card centralizar" onclick="card_seleciona_lang(this , 'jp')">
+                        <img class="card-bandeiras" src="https://flagcdn.com/jp.svg" alt="japão">
+                        <p class="pais lilita-one-regular">JAPÃO</p>
+                        <p class="card-lang">Japonês</p>
+                    </div>
+                    <div class="card centralizar" onclick="card_seleciona_lang(this , 'kr')">
+                        <img class="card-bandeiras" src="https://flagcdn.com/kr.svg" alt="corea do sul">
+                        <p class="pais lilita-one-regular">COREA DO SUL</p>
+                        <p class="card-lang">Coreano</p>
+                    </div>
                 </div>
             </div>
         </div>
