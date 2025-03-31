@@ -496,7 +496,7 @@ const getApi = async (texto, callback) => {
         const idiomaOrigem = idioma.slice(0, 2)
         const idiomaDestino = lang_destino.slice(0, 2)
 
-        const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(texto)}&langpair=${idiomaOrigem}|${idiomaDestino}`
+        const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(texto)}&langpair=${idiomaOrigem}|${idiomaDestino}&mt=0`
 
         const response = await fetch(url)
 
